@@ -9,28 +9,15 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
 import { Provider } from 'react-redux';
-import {Header, CryptoContainer} from './src/components';
 import Store from './src/Stores';
+import AppNavigator from './src/Navigator/AppNavigator'
 
 
-export default class App extends Component {
-  render() {
-    return (
+
+const App = () => (
       <Provider store={ Store }>
-        <View style={styles.container}>
-          <Header />
-          <CryptoContainer/>
-        </View>
+          <AppNavigator />
       </Provider>
     );
-  }
-}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#F5FCFF',
-    borderColor: 'black',
-    borderWidth: 10,
-  },
-});
+export default App;
