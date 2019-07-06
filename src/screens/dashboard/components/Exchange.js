@@ -28,7 +28,7 @@ class Exchange extends Component {
                     <View style={styles.exchangemenu}>
                         <Image
                             style={{width: 80, height: 60}}
-                            source={require('../assests/image/binance.png')}
+                            source={require('../assests/image/binance.jpg')}
                             />
                          <View style={styles.exchangemenufooter}>
                             <Text>Binance</Text>
