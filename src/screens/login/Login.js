@@ -8,6 +8,7 @@
 
 import React, {Component} from 'react';
 import { StyleSheet, Text, View, TextInput, Image, TouchableOpacity} from 'react-native';
+import { createStackNavigator, createAppContainer } from 'react-navigation';
 
 
 class Login extends Component {
@@ -50,7 +51,11 @@ class Login extends Component {
                   />
 
                   <TouchableOpacity style={styles.button}> 
-                      <Text style={styles.buttonText} onPress={this.saveData}>Login</Text>
+                      <Text 
+                        style={styles.buttonText} 
+                        onPress={() => this.props.navigation.navigate('Dashboard')}> 
+                        Login
+                        </Text>
                   </TouchableOpacity>
               </View>
             </View>
