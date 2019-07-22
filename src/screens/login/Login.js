@@ -9,6 +9,12 @@
 import React, {Component} from 'react';
 import { StyleSheet, Text, View, TextInput, Image, TouchableOpacity} from 'react-native';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import InputGroup from './components/InputGroup';
 
 
 class Login extends Component {
@@ -16,7 +22,7 @@ class Login extends Component {
     super(props);
     this.state={
         email:'',
-        password: ''
+        password: 'g'
     }
 }
 
@@ -34,12 +40,13 @@ class Login extends Component {
             <View style={styles.form}>
                   <TextInput style={styles.inputBox}
                   onChangeText={(email) => this.setState({email})}
-                  underlineColorAndroid='rgba(0,0,0,0)' 
+                  value={this.state.email}
                   placeholder="Email"
                   placeholderTextColor = "#002f6c"
                   selectionColor="#fff"
                   keyboardType="email-address"
                   onSubmitEditing={()=> this.password.focus()}/>
+
                   
                   <TextInput style={styles.inputBox}
                   onChangeText={(password) => this.setState({password})} 
@@ -74,7 +81,7 @@ class Login extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#FFFFFF',
     justifyContent: 'flex-start',
     alignItems: 'center',
   },
@@ -91,22 +98,34 @@ const styles = StyleSheet.create({
     padding: 5,
   },
   form: {
+    width: wp('90%'),
+    height: hp('30'),
     justifyContent: 'center',
     alignItems: 'center',
     margin: 20,
-    borderColor: '#F69517',
-    borderWidth: 1,
-  },
+    backgroundColor: 'white',
+    shadowColor: "#000",
+    shadowOpacity: 0.85,
+    shadowRadius: 2.22,
+    shadowOffset: {
+      height: 2,
+      width: 0
+    },
+    elevation: 4,
+    },
   inputBox: {
-    width: 300,
+    width: wp('80%'),
     backgroundColor: '#eeeeee', 
+    borderColor: '#eeeeee',
+    borderWidth: 1,
+    borderRadius: 5,
     padding: 10,
-    fontSize: 16,
+    fontSize: hp('2%'),
     color: '#002f6c',
     margin: 10
 },
 button: {
-    width: 300,
+    width: wp('80%'),
     backgroundColor: '#F69517',
     marginVertical: 10,
     paddingVertical: 12
@@ -116,6 +135,25 @@ buttonText: {
     fontWeight: '500',
     color: '#ffffff',
     textAlign: 'center'
+},
+text: {
+  fontSize:24,
+  color:'white',
+  textAlign:'center',
+},
+withShadow: {
+  margin: 5,
+  height: 150,
+  width: 300,
+  backgroundColor: 'white',
+  shadowColor: "#000",
+  shadowOpacity: 0.85,
+  shadowRadius: 2.22,
+  shadowOffset: {
+    height: 2,
+    width: 0
+  },
+  elevation: 4,
 }
 });
 

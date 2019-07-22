@@ -5,6 +5,7 @@ class Exchange extends Component {
     render() {
         return (
             <View style={styles.exchangeContainer}>
+
                 <Text>Explore Exchanges</Text>
                 <View style={styles.exchangeList}>
                     <View style={styles.exchangemenu}>
