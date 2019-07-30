@@ -55,9 +55,9 @@ export default class ExampleOne extends Component {
  
 const styles = StyleSheet.create({
   container: { flex: 1, padding: 16,margin: 10, paddingTop: 30, backgroundColor: '#fff' },
-  head: { height: 40, backgroundColor: '#808B97' },
+  head: { height: 40, backgroundColor: '#F69517', color: 'white' },
   text: { margin: 6 },
   row: { flexDirection: 'row', backgroundColor: 'white' },
-  btn: { width: 58, height: 18, backgroundColor: '#007CF8',  borderRadius: 2 },
+  btn: { width: 58, height: 18, backgroundColor: '#F69517',  borderRadius: 2 },
   btnText: { textAlign: 'center', color: '#fff' }
 });
