@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, Button, StyleSheet, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import LogoTitle from './components/Logo';
-import Menu from './components/Menu';
+import DisplayBoard from './components/DisplayBoard';
 import LoadCoins from './components/LoadCoins';
 
 class Dashboard extends Component {
@@ -19,7 +19,7 @@ class Dashboard extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Menu/>
+                <DisplayBoard/>
                 <LoadCoins/>
             </View>
         );
