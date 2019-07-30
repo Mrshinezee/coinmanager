@@ -1,19 +1,18 @@
 import React, { Component } from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import { View, Text, Button, StyleSheet, TouchableOpacity } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import LogoTitle from './components/Logo';
 import Menu from './components/Menu';
 import LoadCoins from './components/LoadCoins';
 
 class Dashboard extends Component {
+    
       static navigationOptions = {
-        headerTitle: <LogoTitle />,
-        headerRight: (
-          <Button
-            onPress={() => alert('This is a button!')}
-            title="Info"
-            color="black"
-          />
-        ),
+        headerTitle: 'CoinMaker',
+        // headerTitleStyle: headerStyle(),
+        tabBarIcon:  <Icon name="dashboard" size={25} />,
+        // title: title(),
+        tabBarLabel: 'Dashboard',
       };
     
     
@@ -33,6 +32,24 @@ const styles = StyleSheet.create({
       backgroundColor: '#F5FCFF',
       justifyContent: 'flex-start',
     },
+    tabBar: {
+      backgroundColor: 'white',
+      height: 60,
+      borderTopWidth: 0.5,
+      borderColor: '#E5E5E5',
+      flexDirection: 'row',
+      justifyContent: 'space-around',
+    },
+    tabItem: {
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    tabTitle: {
+      fontSize: 11,
+      color: '#3c3c3c',
+      paddingTop: 3,
+    },
+  
 });
 
 export default Dashboard;
