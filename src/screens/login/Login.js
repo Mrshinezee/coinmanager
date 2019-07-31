@@ -7,27 +7,52 @@
  */
 
 import React, {Component} from 'react';
-import { StyleSheet, Text, View, TextInput, Image, TouchableOpacity} from 'react-native';
+import { StyleSheet, Text, View, TextInput, Image, TouchableOpacity, ActivityIndicator} from 'react-native';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
+import { connect } from 'react-redux';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import InputGroup from './components/InputGroup';
+import login, { loginPending } from './actions/';
 
 
 class Login extends Component {
   constructor(props){
     super(props);
     this.state={
-        email:'',
-        password: 'g'
+        email: 'shinezee54@gmail.com',
+        password: 'shine1234',
+        isAuthenticating: false,
     }
+}
+
+componentDidMount() {
+  if (this.props.isAuthenticated) {
+    this.props.navigation.navigate('App');
+  }
+}
+
+componentWillReceiveProps(nextProps) {
+  if (nextProps.isAuthenticated) {
+    this.props.navigation.navigate('App');
+  }
+  const { isAuthenticating } = nextProps;
+  this.setState({ isAuthenticating});
+}
+
+loginUser = () => {
+  const { email, password } = this.state;
+  const payload = {email, password};
+  this.props.loginPending();
+  this.props.login(payload);
 }
 
 
   render() {
+    const { isAuthenticating } = this.state;
     return (
         <View style={styles.container}>
           <View style={styles.loginContent}> 
@@ -57,13 +82,12 @@ class Login extends Component {
                   ref={(input) => this.password = input}
                   />
 
-                  <TouchableOpacity style={styles.button}> 
-                      <Text 
-                        style={styles.buttonText} 
-                        onPress={() => this.props.navigation.navigate('Dashboard')}> 
+                  <TouchableOpacity style={styles.button} onPress={this.loginUser}> 
+                      <Text style={styles.buttonText} > 
                         Login
-                        </Text>
+                      </Text>
                   </TouchableOpacity>
+                  { isAuthenticating && <View style={styles.buttonText}><ActivityIndicator size="large" color="#F69517" /></View> }
               </View>
             </View>
 
@@ -157,4 +181,15 @@ withShadow: {
 }
 });
 
-export default Login;
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.login.isAuthenticated,
+  isAuthenticating: state.login.isAuthenticating,
+  response: state.login.response,
+});
+
+const mapDispatchToProps = {
+  login,
+  loginPending,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

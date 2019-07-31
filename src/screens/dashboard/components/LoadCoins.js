@@ -53,7 +53,7 @@ class LoadCoins extends Component {
  
 const styles = StyleSheet.create({
   container: { flex: 1, padding: 16,margin: 10, paddingTop: 30, backgroundColor: '#fff' },
-  head: { height: 40, backgroundColor: '#F69517', color: 'white' },
+  head: { height: 40, backgroundColor: '#F69517' },
   text: { margin: 6 },
   row: { flexDirection: 'row', backgroundColor: 'white' },
   btn: { width: 58, height: 18, backgroundColor: '#F69517',  borderRadius: 2 },
