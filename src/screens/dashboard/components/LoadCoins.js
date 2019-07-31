@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, TouchableOpacity,Text, Alert } from 'react-native';
 import { Table, Row, Cell, TableWrapper } from 'react-native-table-component';
+import { withNavigation } from 'react-navigation';
 import Data from '../util/data';
 
 
@@ -10,7 +11,7 @@ const Button = () => (
   </TouchableOpacity>
 );
  
-export default class ExampleOne extends Component {
+class LoadCoins extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -18,14 +19,11 @@ export default class ExampleOne extends Component {
       tableData: Data,
     }
   }
-  _alertIndex(index) {
-    Alert.alert(`This is row ${index + 1}`);
-  }
  
   render() {
     const state = this.state;
-    const element = (data, index) => (
-      <TouchableOpacity onPress={() => this._alertIndex(index)}>
+    const element = (data) => (
+      <TouchableOpacity onPress={() => (this.props.navigation.navigate('Purchase', { info: data }))}>
         <View style={styles.btn}>
           <Text style={styles.btnText}>Add</Text>
         </View>
@@ -61,3 +59,5 @@ const styles = StyleSheet.create({
   btn: { width: 58, height: 18, backgroundColor: '#F69517',  borderRadius: 2 },
   btnText: { textAlign: 'center', color: '#fff' }
 });
+
+export default withNavigation(LoadCoins);
