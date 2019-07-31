@@ -4,6 +4,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { createSwitchNavigator,createStackNavigator, createAppContainer, createDrawerNavigator, createBottomTabNavigator, DrawerNavigator, StackNavigator, TabNavigator } from "react-navigation";
 import LoginScreen from '../screens/login/Login';
 import Dashboard from '../screens/dashboard/Dashboard';
+import PurchaseScreen from '../screens/dashboard/PurchaseCoin';
 import Signal from '../screens/signal/Signal';
 import Transcations from '../screens/transcations/Transcations';
 import Exchange from '../screens/exchange/Exchange';
@@ -38,6 +39,11 @@ const DashboardStackNavigation = createStackNavigator({
   }
 });
 
+const Purchase = createStackNavigator({
+  Purchase: {
+    screen: PurchaseScreen,
+  },
+});
 const Login = createStackNavigator({
   Login: {
     screen: LoginScreen,
@@ -56,7 +62,8 @@ const AppDrawerNavigation = createDrawerNavigator({
 const AppSwitchNavigator = createSwitchNavigator(
     {
       Home: Login,
-      Dashboard: AppDrawerNavigation
+      App: AppDrawerNavigation,
+      Purchase,
     },
   );
 
