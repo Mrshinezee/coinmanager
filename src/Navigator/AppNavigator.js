@@ -8,6 +8,7 @@ import PurchaseScreen from '../screens/dashboard/PurchaseCoin';
 import Signal from '../screens/signal/Signal';
 import Transcations from '../screens/transcations/Transcations';
 import Exchange from '../screens/exchange/Exchange';
+import LogoutScreen from '../screens/Logout/Logout';
 
 
 
@@ -44,6 +45,11 @@ const Purchase = createStackNavigator({
     screen: PurchaseScreen,
   },
 });
+const Logout = createStackNavigator({
+  Logout: {
+    screen: LogoutScreen,
+  },
+});
 const Login = createStackNavigator({
   Login: {
     screen: LoginScreen,
@@ -55,7 +61,7 @@ const AppDrawerNavigation = createDrawerNavigator({
       screen: DashboardStackNavigation
   },
   Logout: {
-    screen: Login
+    screen: Logout
   },
 });
 

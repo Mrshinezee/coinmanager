@@ -156,6 +156,8 @@ const styles = StyleSheet.create({
         padding: 10,
         borderWidth: 1,
         borderColor: 'black',
+        borderRightColor: 'white',
+        borderLeftColor: 'white',
     },
     switchTransfer: {
         width: 100,

@@ -1,6 +1,7 @@
-import { combineReducers } from 'redux';
 import CryptoReducer from './CryptoReducer';
+import login from '../screens/login/reducers';
 
-export default combineReducers({
-  crypto: CryptoReducer
-});
+export default {
+  crypto: CryptoReducer,
+  login,
+};
