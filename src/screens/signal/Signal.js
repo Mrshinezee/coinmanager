@@ -1,6 +1,15 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+  ScrollView,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import VideoItem from './components/videoItem';
+import Data from './util/data';
 
 class Signal extends Component {
     static navigationOptions = {
@@ -11,13 +20,17 @@ class Signal extends Component {
         tabBarLabel: 'Signal',
       };
 
-    render() {
+      render() {
         return (
-            <View style={styles.container}>
-                <Text>Signal</Text>
-            </View>
+          <View style={styles.container}>
+            <ScrollView style={styles.body}>
+              {Data.map(content => (
+                <VideoItem video={content} />
+              ))}
+            </ScrollView>
+          </View>
         );
-    }
+      }
 }
 
 export default Signal;
@@ -25,7 +38,8 @@ export default Signal;
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      alignItems: 'center',
-      justifyContent: 'center',
     },
-});
+    body: {
+      flex: 1,
+    },
+  });
