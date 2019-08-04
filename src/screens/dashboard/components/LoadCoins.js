@@ -23,7 +23,14 @@ class LoadCoins extends Component {
   render() {
     const state = this.state;
     const element = (data) => (
-      <TouchableOpacity onPress={() => (this.props.navigation.navigate('Purchase', { info: data }))}>
+      <TouchableOpacity 
+      onPress={() => (this.props.navigation.navigate('Purchase', { data }))}
+      // onPress={() => (this.props.navigation.navigate('Purchase', {
+      //   itemId: 86,
+      //   otherParam: 'anything you want here',
+      // }))
+      // }
+      >
         <View style={styles.btn}>
           <Text style={styles.btnText}>Add</Text>
         </View>

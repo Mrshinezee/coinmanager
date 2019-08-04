@@ -11,7 +11,7 @@ const Input = ({
                     </View>
                     <TextInput
                     {...rest}
-                    style={{height: 40, borderColor: 'gray', borderWidth: 1, borderRadius: 2}}
+                    style={{height: 40, borderColor: 'gray', borderWidth: 1, borderRadius: 2, padding: 10}}
                     value={value}
                     />
                 </View>
