@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { Platform, View, Text, TouchableOpacity, StyleSheet, Button} from 'react-native'
+import { Platform, View, Text, TouchableOpacity, StyleSheet, Button, AlertIOS} from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { HeaderBackButton, NavigationActions } from 'react-navigation';
+import PropTypes from 'prop-types';
 import Input from './components/Input';
+
 
 class PurchaseCoin extends Component {
 
@@ -13,6 +15,7 @@ class PurchaseCoin extends Component {
             usdPrice: '',
             quantity: 0,
             note: '',
+            coin: '',
             selectedSwitch: 1,
         };
       }
@@ -52,8 +55,22 @@ class PurchaseCoin extends Component {
         };
       }
 
+      handlePurchase = () => {
+        const { quantity } = this.state;
+        const { onSend } = this.props;
+        return AlertIOS.alert('Complete', 'Transaction was successful.');
+        if (onSend) {
+          onSend(quantity);
+        }
+    
+        this.setState({ quantity: 0 });
+      }
+
+      handleTest = (x) => {
+        return x;
+      }
+
     render() {
-        console.log('purchase', this.props.navigation.state.params)
         return (
             <View style={styles.container}>
                <View style={styles.tabSwitch}>
@@ -61,7 +78,7 @@ class PurchaseCoin extends Component {
                     style={[styles.switchBuy, { backgroundColor: this.state.selectedSwitch === 1 ? '#F69517' : '#FFF' }]}
                     onPress={() => this.setState({ selectedSwitch: 1})}
                 >
-                   <Text style={styles.tabText}>
+                   <Text style={styles.tabText} testID="Buy">
                        Buy
                    </Text>
                </TouchableOpacity>
@@ -69,7 +86,7 @@ class PurchaseCoin extends Component {
                     style={[styles.switchSell, { backgroundColor: this.state.selectedSwitch === 2 ? '#F69517' : '#FFF' }]}
                     onPress={() => this.setState({ selectedSwitch: 2})}
                >
-                    <Text style={styles.tabText}>    
+                    <Text style={styles.tabText} testID="Sell">    
                        Sell
                    </Text>
                </TouchableOpacity>
@@ -77,7 +94,7 @@ class PurchaseCoin extends Component {
                     style={[styles.switchTransfer, { backgroundColor: this.state.selectedSwitch === 3 ? '#F69517' : '#FFF' }]}
                     onPress={() => this.setState({ selectedSwitch: 3})}
                >
-                    <Text style={styles.tabText}>
+                    <Text style={styles.tabText} testID="Transfer">
                        Transfer
                    </Text>
                </TouchableOpacity>
@@ -90,6 +107,11 @@ class PurchaseCoin extends Component {
                    value={this.state.exchange}
                    />
                    <Input 
+                   label='Cryptocurrency'
+                   onChangeText={(coin) => this.setState({coin})}
+                   value={this.state.coin}
+                   />
+                   <Input 
                    label='Price in Usd'
                    onChangeText={(usdPrice) => this.setState({usdPrice})}
                    value={this.state.usdPrice}
@@ -98,6 +120,7 @@ class PurchaseCoin extends Component {
                    label='Quantity'
                    onChangeText={(quantity) => this.setState({quantity})}
                    value={this.state.quantity}
+                   testID="purchasePrice"
                    />
                    <Input 
                    label='Note'
@@ -109,7 +132,8 @@ class PurchaseCoin extends Component {
                </View>
                <TouchableOpacity
                 style={styles.button}
-                onPress={() => (alert('cliked'))}
+                testID="purchaseButton"
+                onPress={() => this.handlePurchase()}
                 >
                     <Text style={styles.buttonText}>Save Transcation</Text>
                 </TouchableOpacity>
@@ -117,6 +141,16 @@ class PurchaseCoin extends Component {
         );
     }
 }
+
+// PurchaseCoin.propTypes = {
+//   params: PropTypes.object,
+//   state: PropTypes.object,
+// };
+
+// PurchaseCoin.defaultProps = {
+//   params: {},
+//   state: {},
+// };
 
 const styles = StyleSheet.create({
     container: {

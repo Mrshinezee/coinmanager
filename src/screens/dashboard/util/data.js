@@ -278,5 +278,5 @@ const data = [
         }
     }
 ]
-const info = Object.keys(data).map(i => [ data[i].cmc_rank, data[i].name,data[i].num_market_pairs , data[i].symbol ]);
+const info = Object.keys(data).map(i => [ data[i].cmc_rank, data[i].name,data[i].num_market_pairs , data[i] ]);
 export default info;
