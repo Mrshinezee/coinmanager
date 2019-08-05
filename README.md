@@ -14,7 +14,10 @@ $ git clone https://github.com/Mrshinezee/coinmanager.git
 - Navigate to the project directory
 ```bash
  $ cd coinmanager
+ npm install
+ react-native run-ios
 ```
+
 ### Login
 - the user should be promted to this page to sign in
 
